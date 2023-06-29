@@ -16,11 +16,11 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
+        stage ('checkout') {
             steps {
-                // Checkout source code from GitHub repository
-                checkout([$class: 'GitSCM', branches: [[name: "${gitBranch}"]], userRemoteConfigs: [[url: "${gitRepo}"]]])
+            checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/vaishnavi-g06/aspnet-mssql']]])
             }
+        }
         }
 
         stage('Build and Push') {
